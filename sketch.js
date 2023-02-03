@@ -1,19 +1,22 @@
 
 
 function setup(){
-  createCanvas(1920, 1080, WEBGL);
+  createCanvas(800, 800, WEBGL);
   camera(180, -800, 200, 200, 0 ,200)
-  ambientLight(255); // white light
+
 }
 
 function draw(){
 
   background(221);
   orbitControl();
-
+  directionalLight(250, 250, 250, 20,20,1);
+  specularMaterial(119,119,119);
 
   for (let x=0; x < 400; x +=20){
     for (let z=0; z < 400; z +=20){
+
+
       if (x == 0 | z == 0) {
         push();
         translate(x, -3.25, z);
@@ -36,9 +39,11 @@ function draw(){
       else {
         push();
       // ground plane is XZ, not XY (front plane)
-      translate(x, 0, z);
-      box(18.5);
-      pop();
+        translate(x, 0, z);
+        box(18.5);
+        pop();
+        fill(100)
+
       }
     }
   }
