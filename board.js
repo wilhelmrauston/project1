@@ -30,6 +30,7 @@ Board.initialize = function() {
 
 Board.createGrid = function() {
     //2d grid (sketch handles 3d render, board.js handles nodes)
+    //Change box height depending on edge weight
 
 }
 
