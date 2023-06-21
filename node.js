@@ -18,9 +18,9 @@ class Node {
         this.previousDistance = null;
         this.totalDistance = Infinity;
 
-        this.size = size;
-
 
 
     }
 }
+
+export { Node };

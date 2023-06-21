@@ -6,3 +6,23 @@ html, body {
 canvas {
   display: block;
 }
+
+#grid {
+  margin:auto;
+  border-collapse: collapse;
+}
+
+#grid tr td{
+  width: 25px;
+  height: 25px;
+	border: 1px solid rgb(255, 183, 82);
+
+}
+
+.start {
+  background-color: green;
+}
+
+.target{
+  background-color: red;
+}
