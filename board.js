@@ -1,15 +1,14 @@
 import { Node } from './node.js';
+import { djikstras } from './algorithms/dijkstras.js';
 
 
 class Board {
     constructor() {
-        this.height = 0;
-        this.width = 0;
+
         this.start = null;
         this.target = null;
 
-        this.boardArray = [];
-        this.nodes = {};
+        this.nodes = [];
         this.nodesAnimate = [];
 
         this.nodesPathAnimate = [];
@@ -25,6 +24,7 @@ Board.prototype.initialize = function() {
 
 Board.prototype.createGrid = function() {
     let newGrid = document.getElementById("grid");
+    let startIndex, targetIndex;
     
     for (var r = 0; r < 20; r++) {
         let currRow = document.createElement("tr");
@@ -37,23 +37,28 @@ Board.prototype.createGrid = function() {
             let block = document.createElement("td");
             block.id = r + "-" + c;
 
-            if (r == 0 && c == 0) {
+            if (r == 10 && c == 5) {
                 block.className = "start";
                 this.start = `${block.id}`;
-            } else if (r === 1 && c === 1) {
+                let startIndex = this.nodes.length - 1;
+            } else if (r === 10 && c === 35) {
                 block.className = "target";
                 this.target = `${block.id}`;
+                let targetIndex = this.nodes.length - 1;
             } else {
                 block.className = "unvisited";
             }
             rowW.appendChild(block);
             let newNode = new Node(block.id, block.className);
             this.nodes[block.id] = newNode;
-            console.log(newNode)
+
 
         }
     }
+    console.log(this.nodes)
+
+    djikstras(grid, this.nodes[startIndex], this.nodes[targetIndex]);
 };
 
-let newBoard = new Board();
-newBoard.initialize();
+let grid = new Board();
+grid.initialize();
